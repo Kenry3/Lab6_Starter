@@ -90,8 +90,7 @@ function initFormHandler() {
   titleTxt: recipeObject['titleTxt'], organization: recipeObject['organization'], rating: recipeObject['rating'], 
   numRatings: recipeObject['numRatings'], lengthTime: recipeObject['lengthTime'], ingredients: recipeObject['ingredients']};
   // B8. TODO - Append this new <recipe-card> to <main>
-  let mainEl = document.querySelector('main');
-  mainEl.append(recipeCardEl);
+  document.querySelector('main').append(recipeCardEl);
   // B9. TODO - Get the recipes array from localStorage, add this new recipe to it, and
   //            then save the recipes array back to localStorage
   let recipesArray = JSON.parse(localStorage.getItem('recipes'));
@@ -106,8 +105,10 @@ function initFormHandler() {
   // B12. TODO - Clear the local storage
   localStorage.clear();
   // B13. TODO - Delete the contents of <main>
+  let mainEl = document.querySelector('main');
   while (mainEl.hasChildNodes()) {
-    mainEl.removeChild(list.firstChild);
+    mainEl.removeChild(mainEl.firstChild);
   }
+  location.reload();
   });
 }
